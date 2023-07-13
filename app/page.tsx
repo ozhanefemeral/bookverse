@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 export const preferredRegion = "home";
 export const dynamic = "force-dynamic";
