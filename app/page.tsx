@@ -1,3 +1,4 @@
+import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 export const preferredRegion = "home";
 export const dynamic = "force-dynamic";
@@ -18,6 +19,9 @@ export default function Home() {
         </Link>
         {". "}- Where stories come alive!
       </p>
+      <Link href="/authors" className={buttonVariants({ variant: "link" })}>
+          All Authors
+      </Link>
     </main>
   );
 }
