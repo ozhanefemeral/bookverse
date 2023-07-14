@@ -1,3 +1,4 @@
+import BookSearch from "@/components/book-search";
 import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 export const preferredRegion = "home";
@@ -19,8 +20,12 @@ export default function Home() {
         </Link>
         {". "}- Where stories come alive!
       </p>
+      <BookSearch />
+      <p>
+        or
+      </p>
       <Link href="/authors" className={buttonVariants({ variant: "link" })}>
-          All Authors
+          Browse Authors
       </Link>
     </main>
   );
