@@ -36,7 +36,6 @@ async function main() {
           "https://pbs.twimg.com/profile_images/1506792347840888834/dS-r50Je_400x400.jpg",
       },
     }),
-
     prisma.authors.upsert({
       where: { slug: "jrr-tolkien" },
       update: {},
@@ -74,7 +73,7 @@ async function main() {
         },
         image: "",
         shortBio:
-          "John Ronald Reuel Tolkien was an English writer, poet, philologist, and academic. He was the author of the high fantasy works The Hobbit and The Lord of the Rings. His works are highly popular and have been adapted into films, television series, radio serials, video games and more.",
+          "Master of high fantasy, creator of Middle-earth, and author of The Hobbit and The Lord of the Rings.",
       },
     }),
     prisma.authors.upsert({
@@ -114,7 +113,7 @@ async function main() {
         },
         image: "",
         shortBio:
-          "Joanne Rowling better known by her pen name J. K. Rowling is a British author, philanthropist, film producer, television producer, and screenwriter. She is best known for writing the Harry Potter fantasy series, which has won multiple awards and become the best-selling book series in history.",
+          "Magical storyteller and creator of the beloved Harry Potter series, capturing the imaginations of readers worldwide.",
       },
     }),
     prisma.authors.upsert({
@@ -154,7 +153,7 @@ async function main() {
         },
         image: "",
         shortBio:
-          "Clive Staples Lewis was a British writer and lay theologian. He held academic positions in English literature at both Oxford University and Cambridge University. He is best known for his works of fiction, especially The Chronicles of Narnia",
+          "Gifted writer and creator of The Chronicles of Narnia, blending fantasy and Christian themes in captivating tales.",
       },
     }),
     prisma.authors.upsert({
@@ -194,7 +193,7 @@ async function main() {
         },
         image: "",
         shortBio:
-          "Eric Arthur Blair, known by his pen name George Orwell, was an English novelist, essayist, journalist and critic. His work is characterised by lucid prose, biting social criticism, opposition to totalitarianism, and outspoken support of democratic socialism.",
+          "English critic known for his lucid prose, sharp social criticism, and opposition to totalitarianism",
       },
     }),
     prisma.authors.upsert({
@@ -244,7 +243,7 @@ async function main() {
         },
         image: "",
         shortBio:
-          "George Raymond Richard Martin is an American novelist and short story writer, screenwriter, and television producer. He is the author of the series of epic fantasy novels A Song of Ice and Fire, which was adapted into the Emmy Award-winning HBO series Game of Thrones.",
+          "Master of intricate storytelling, warring realms, and mind behind the series 'A Song of Ice and Fire.'",
       },
     }),
     prisma.authors.upsert({
@@ -294,7 +293,7 @@ async function main() {
         },
         image: "",
         shortBio:
-          "Agatha Christie was an English crime novelist and playwright. Known as the 'Queen of Crime,' Christie's intricate plots, memorable characters, and surprising twists have made her one of the most beloved authors in the mystery genre.",
+          "Celebrated as the 'Queen of Crime' for her intricate plots and memorable characters",
       },
     }),
     prisma.authors.upsert({
@@ -344,7 +343,7 @@ async function main() {
         },
         image: "",
         shortBio:
-          "Stephen Edwin King is an American author of horror, supernatural fiction, suspense, crime, science-fiction, and fantasy novels. His books have sold more than 350 million copies, and many have been adapted into films, television series, miniseries, and comic books.",
+          "Master of horror and suspense, captivating readers with his gripping storytelling",
       },
     }),
     prisma.authors.upsert({
@@ -394,7 +393,7 @@ async function main() {
         },
         image: "",
         shortBio:
-          "Gabriel García Márquez was a Colombian novelist, short-story writer, screenwriter, known as Gabo or Gabito throughout Latin America. Considered one of the most significant authors of the 20th century and one of the best in the Spanish language, he was awarded the 1982 Nobel Prize in Literature.",
+          "Master of magical realism, enchanting readers with his lyrical prose and captivating tales.",
       },
     }),
     prisma.authors.upsert({
@@ -444,7 +443,7 @@ async function main() {
         },
         image: "",
         shortBio:
-          "Jane Austen was an English novelist whose works offer insightful social commentary and engaging stories. With her keen observations and wit, Austen's novels, including 'Pride and Prejudice' and 'Sense and Sensibility,' continue to resonate with readers, exploring themes of love, marriage, and society",
+          "Master of wit and social commentary, delighting readers with exploring love, society, and romance.",
       },
     }),
     prisma.authors.upsert({
@@ -494,7 +493,7 @@ async function main() {
         },
         image: "",
         shortBio:
-          "Ernest Miller Hemingway was an American novelist, short-story writer, journalist, and sportsman. His economical and understated style—which he termed the iceberg theory—had a strong influence on 20th-century fiction, while his adventurous lifestyle and his public image brought him admiration from later generations.",
+          "Legendary writer known for his sparse and iconic novels such as 'The Old Man and the Sea",
       },
     }),
     prisma.authors.upsert({
@@ -544,7 +543,7 @@ async function main() {
         },
         image: "",
         shortBio:
-          'Samuel Langhorne Clemens, known by his pen name Mark Twain, was an American writer, humorist, entrepreneur, publisher, and lecturer. He was lauded as the "greatest humorist the United States has produced," and William Faulkner called him "the father of American literature".',
+          "Renowned humorist and storyteller whose timeless works, including 'The Adventures of Tom Sawyer'.",
       },
     }),
     prisma.authors.upsert({
@@ -594,7 +593,7 @@ async function main() {
         },
         image: "",
         shortBio:
-          "Count Lev Nikolayevich Tolstoy, usually referred to in English as Leo Tolstoy, was a Russian writer who is regarded as one of the greatest authors of all time. He received multiple nominations for the Nobel Prize in Literature every year from 1902 to 1906.",
+          "Master of Russian literature, known for epic novels like 'War and Peace' and 'Anna Karenina'.",
       },
     }),
     prisma.authors.upsert({
@@ -644,7 +643,7 @@ async function main() {
         },
         image: "",
         shortBio:
-          "Adeline Virginia Woolf was an English writer, considered one of the most important modernist 20th-century authors and also a pioneer in the use of stream of consciousness as a narrative device. Woolf was born into an affluent household in South Kensington, London, the seventh child in a blended family of eight.",
+          "Influential modernist writer exploring the depths of consciousness and identity",
       },
     }),
     prisma.authors.upsert({
@@ -694,7 +693,7 @@ async function main() {
         },
         image: "",
         shortBio:
-          "Oscar Wilde was an Irish playwright, novelist, essayist, and poet. Renowned for his wit, flamboyant style, and social commentary, Wilde's works continue to captivate readers with their exploration of societal norms and human nature.",
+          "Iconic Irish playwright and novelist known for his wit and social commentary, enchanting readers.",
       },
     }),
     prisma.authors.upsert({
@@ -745,7 +744,7 @@ async function main() {
         },
         image: "",
         shortBio:
-          "Nelle Harper Lee was an American novelist best known for her 1960 novel To Kill a Mockingbird. It won the 1961 Pulitzer Prize and has become a classic of modern American literature. Lee published only two books, yet she was awarded the Presidential Medal of Freedom in 2007 for her contribution to literature.",
+          "Acclaimed novelist celebrated for her powerful exploration of racial injustice and moral integrity.",
       },
     }),
     prisma.authors.upsert({
@@ -795,7 +794,7 @@ async function main() {
         },
         image: "",
         shortBio:
-          "Fyodor Dostoevsky was a Russian novelist, short story writer, essayist and journalist. Dostoevsky's literary works explore human psychology in the troubled political, social, and spiritual atmospheres of 19th-century Russia, and engage with a variety of philosophical and religious themes.",
+          "Legendary Russian novelist exploring the depths of human psychology and societal issues.",
       },
     }),
   ]);
