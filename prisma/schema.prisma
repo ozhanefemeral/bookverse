@@ -35,6 +35,8 @@ model authors {
   name      String
   image     String
   slug      String  @unique
+  shortBio  String?
+  
   createdAt DateTime @default(now())
 
   books books[]

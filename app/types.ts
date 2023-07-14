@@ -5,6 +5,7 @@ const authorBasicFields = Prisma.validator<Prisma.authorsArgs>()({
     name: true,
     image: true,
     slug: true,
+    shortBio: true,
   },
 });
 
