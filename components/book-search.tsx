@@ -15,7 +15,7 @@ export default function BookSearch() {
 
   return (
     <form action="/books" method="GET">
-      <div className="flex w-full flex-col md:flex-row max-w-sm items-center gap-4 py-4">
+      <div className="flex w-full flex-col md:flex-row max-w-sm items-center gap-4">
         <Input
           type="text"
           name="title"

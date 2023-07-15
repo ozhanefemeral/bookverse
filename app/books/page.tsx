@@ -29,8 +29,10 @@ export default async function BookSearchResults({
   const searchResults = await getBooks({ searchParams });
 
   return (
-    <div>
-      <BookSearch />
+    <div className="p-8">
+      <div className="pb-4">
+        <BookSearch />
+      </div>
       <hr />
       <BookGrid searchResults={searchResults} />
     </div>

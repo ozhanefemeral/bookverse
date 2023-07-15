@@ -22,7 +22,7 @@ export default function BookGrid({
   const isEmpty = books.length === 0;
 
   return (
-    <div className="p-4">
+    <div>
       {isEmpty && (
         <div className="flex flex-col items-center justify-center">
           <h1 className="text-3xl font-bold text-center">
