@@ -27,13 +27,6 @@ export default async function BookSearchResults({
     <div>
       <BookSearch />
       <hr />
-      {book && (
-        <div className="py-4">
-          Found {books.length} book{books.length > 1 ? "s" : ""} matching{" "}
-          <span className="font-bold text-primary">{book}</span>.
-        </div>
-      )}
-
       <BookGrid books={books} />
     </div>
   );

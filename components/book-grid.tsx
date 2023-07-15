@@ -24,6 +24,8 @@ const sortOptions = ["Title", "Author", "Year"];
 
 export default function BookGrid({ books }: { books: BookWithAuthor[] }) {
   const [sort, setSort] = useState(sortOptions[0]);
+  const query = new URLSearchParams(location.search);
+  const book = query.get("book") || "";
 
   const sortedBooks = books.sort((a, b) => {
     switch (sort) {
@@ -40,20 +42,26 @@ export default function BookGrid({ books }: { books: BookWithAuthor[] }) {
 
   return (
     <div>
-      <div className="flex items-center justify-end py-4">
-        Sort By &nbsp;
-        <Select value={sort} onValueChange={setSort} defaultValue={sort}>
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Theme" />
-          </SelectTrigger>
-          <SelectContent>
-            {sortOptions.map((option) => (
-              <SelectItem key={option} value={option}>
-                {option}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
+      <div className="flex items-center justify-between py-4">
+        <div>
+          Found {books.length} book{books.length > 1 ? "s" : ""} matching{" "}
+          <span className="font-bold text-primary">{book}</span>.
+        </div>
+        <div className="flex justify-end items-center">
+          Sort By &nbsp;
+          <Select value={sort} onValueChange={setSort} defaultValue={sort}>
+            <SelectTrigger className="w-[180px]">
+              <SelectValue placeholder="Theme" />
+            </SelectTrigger>
+            <SelectContent>
+              {sortOptions.map((option) => (
+                <SelectItem key={option} value={option}>
+                  {option}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {sortedBooks.map((book) => (
