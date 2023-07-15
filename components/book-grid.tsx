@@ -1,91 +1,85 @@
 "use client";
 
-import { BookWithAuthor } from "@/app/types";
 import {
   Card,
-  CardContent,
-  CardDescription,
   CardHeader,
   CardTitle,
 } from "./ui/card";
-import { Button } from "./ui/button";
 import Image from "next/image";
-import Link from "next/link";
-import { useState } from "react";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "./ui/select";
+import { SearchResult } from "@/app/types";
 
-const sortOptions = ["Title", "Author", "Year"];
+export default function BookGrid({
+  searchResults,
+}: {
+  searchResults: SearchResult;
+}) {
+  const {
+    results: books,
+    total_results: totalResults,
+    total_pages: totalPages,
+  } = searchResults;
 
-export default function BookGrid({ books }: { books: BookWithAuthor[] }) {
-  const [sort, setSort] = useState(sortOptions[0]);
-  const query = new URLSearchParams(location.search);
-  const book = query.get("book") || "";
-
-  const sortedBooks = books.sort((a, b) => {
-    switch (sort) {
-      case "Title":
-        return a.title.localeCompare(b.title);
-      case "Author":
-        return a.authors[0].name.localeCompare(b.authors[0].name);
-      case "Year":
-        if (a.year && b.year) return a.year - b.year;
-      default:
-        return 0;
-    }
-  });
+  const isEmpty = books.length === 0;
 
   return (
-    <div>
-      <div className="flex items-center justify-between py-4">
-        <div>
-          Found {books.length} book{books.length > 1 ? "s" : ""} matching{" "}
-          <span className="font-bold text-primary">{book}</span>.
+    <div className="p-4">
+      {isEmpty && (
+        <div className="flex flex-col items-center justify-center">
+          <h1 className="text-3xl font-bold text-center">
+            Looks like there are no books here 😿
+          </h1>
+          <p className="text-center">
+            Try searching for something else or check back later.
+          </p>
         </div>
-        <div className="flex justify-end items-center">
-          Sort By &nbsp;
-          <Select value={sort} onValueChange={setSort} defaultValue={sort}>
-            <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Theme" />
-            </SelectTrigger>
-            <SelectContent>
-              {sortOptions.map((option) => (
-                <SelectItem key={option} value={option}>
-                  {option}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-        </div>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {sortedBooks.map((book) => (
-          <Card key={book.title} className="flex flex-col gap-2">
-            <CardHeader>
-              <Image src={book.image} alt={book.title} className="w-full" />
-              <CardTitle>{book.title}</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <CardDescription className="text-right">
-                {book.authors.map((author) => {
-                  return (
-                    <Button asChild variant={"link"} key={author.slug}>
-                      <Link href={`/authors/${author.slug}`}>
-                        {author.name}
-                      </Link>
-                    </Button>
-                  );
-                })}
-              </CardDescription>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
+      )}
+      {!isEmpty && (
+        <>
+          <div className="flex items-center py-4">
+            Found
+            <span className="font-bold text-primary">
+              &nbsp;{totalResults}&nbsp;
+            </span>
+            book{totalResults > 1 ? "s" : ""}
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            {books.map((book, index) => {
+              const mostCurrentEdition =
+                book.published_works[book.published_works.length - 1];
+              return (
+                <Card
+                  key={`${book.title}-${index}`}
+                  className="flex flex-col gap-2"
+                >
+                  <CardHeader>
+                    <CardTitle className="text-center pb-4">
+                      {book.title}
+                    </CardTitle>
+                    <Image
+                      src={mostCurrentEdition.cover_art_url}
+                      alt={book.title}
+                      width={250}
+                      height={200}
+                      className="mx-auto"
+                    />
+                  </CardHeader>
+                  {/* <CardContent className="mt-auto border-t">
+                    <CardDescription className="flex justify-center gap-4">
+                      {book.authors.map((author) => {
+                        return (
+                          <Button asChild variant={"link"} key={author} className="flex-shrink-0">
+                            <Link href={`/authors/${author}`}>{author}</Link>
+                          </Button>
+                        );
+                      })}
+                    </CardDescription>
+                  </CardContent> */}
+                </Card>
+              );
+            })}
+          </div>
+        </>
+      )}
     </div>
   );
 }

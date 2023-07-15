@@ -1,5 +1,4 @@
 import BookSearch from "@/components/book-search";
-import { buttonVariants } from "@/components/ui/button";
 import Link from "next/link";
 export const preferredRegion = "home";
 export const dynamic = "force-dynamic";
@@ -21,12 +20,6 @@ export default function Home() {
         {". "}- Where stories come alive!
       </p>
       <BookSearch />
-      <p>
-        or
-      </p>
-      <Link href="/authors" className={buttonVariants({ variant: "link" })}>
-          Browse Authors
-      </Link>
     </main>
   );
 }

@@ -12,3 +12,14 @@ export const timeAgo = (timestamp: Date, timeOnly?: boolean): string => {
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
+
+export const apiRoute = process.env.API_URL || ""
+export const apiKey = process.env.API_KEY || ""
+export const apiHost = process.env.API_HOST || ""
+export const fetchOptions = {
+  method: "GET",
+  headers: {
+    "X-RapidAPI-Key": apiKey,
+    "X-RapidAPI-Host": apiHost
+  },
+}

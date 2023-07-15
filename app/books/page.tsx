@@ -1,33 +1,37 @@
 import BookSearch from "@/components/book-search";
-import prisma from "@/lib/prisma";
-import { BookWithAuthor } from "../types";
 import BookGrid from "@/components/book-grid";
+import { SearchResult } from "../types";
+import { apiRoute, fetchOptions } from "@/lib/utils";
+
+async function getBooks({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string };
+}): Promise<SearchResult> {
+  const params = new URLSearchParams(searchParams);
+
+  const url = `${apiRoute}/api/search?${params}}`;
+
+  const response = await fetch(url, fetchOptions);
+  const results = await response.json();
+
+  return results;
+}
 
 export default async function BookSearchResults({
   params,
   searchParams,
 }: {
-  params: { slug: string };
+  params: {};
   searchParams: { [key: string]: string };
 }) {
-  const { book } = searchParams;
-  const books = (await prisma.books.findMany({
-    where: {
-      title: { contains: book, mode: "insensitive" },
-    },
-    include: {
-      authors: true,
-    },
-    orderBy: {
-      title: "asc",
-    },
-  })) as BookWithAuthor[];
+  const searchResults = await getBooks({ searchParams });
 
   return (
     <div>
       <BookSearch />
       <hr />
-      <BookGrid books={books} />
+      <BookGrid searchResults={searchResults} />
     </div>
   );
 }

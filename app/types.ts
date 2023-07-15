@@ -1,50 +1,35 @@
 import { Prisma } from "@prisma/client";
 
-const authorBasicFields = Prisma.validator<Prisma.authorsArgs>()({
-  select: {
-    name: true,
-    image: true,
-    slug: true,
-    shortBio: true,
-  },
-});
+export type SearchResult = {
+  total_results: number;
+  total_pages: number;
+  results: Book[];
+};
 
-const bookBasicFields = Prisma.validator<Prisma.booksArgs>()({
-  select: {
-    title: true,
-    image: true,
-    year: true,
-  },
-});
+export type Book = {
+  subcategories: string[];
+  page_count: number;
+  title_search: string;
+  copyright: number;
+  title: string;
+  subject_tags: string[];
+  recommended_isbns: string[];
+  published_works: PublishedWork[];
+  series_name: string;
+  min_age: number | null;
+  book_type: string;
+  authors: string[];
+  categories: string[];
+  language: string;
+  summary: string;
+  work_id: number;
+  canonical_isbn: string;
+};
 
-const authorWithBookFields = Prisma.validator<Prisma.authorsArgs>()({
-  select: {
-    ...authorBasicFields.select,
-    books: {
-      select: bookBasicFields.select,
-    },
-  },
-});
-
-export type Author = Prisma.authorsGetPayload<{
-  select: typeof authorBasicFields.select;
-}>;
-
-export type Book = Prisma.booksGetPayload<{
-  select: typeof bookBasicFields.select;
-}>;
-
-export type BookWithAuthor = Prisma.booksGetPayload<{
-  select: {
-    title: true;
-    image: true;
-    year: true;
-    authors: {
-      select: typeof authorBasicFields.select;
-    };
-  };
-}>;
-
-export type AuthorWithBooks = Prisma.authorsGetPayload<{
-  select: typeof authorWithBookFields.select;
-}>;
+type PublishedWork = {
+  isbn: string;
+  copyright: number;
+  published_work_id: number;
+  page_count: number | null;
+  cover_art_url: string;
+};

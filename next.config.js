@@ -4,7 +4,7 @@ const nextConfig = {
     appDir: true,
   },
   images: {
-    domains: ['pbs.twimg.com'],
+    domains: ['pbs.twimg.com', 's3.amazonaws.com', 'mm-static-media.s3.amazonaws.com'],
   },
 }
 

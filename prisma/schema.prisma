@@ -14,31 +14,4 @@ model users {
   email     String   @unique
   image     String
   createdAt DateTime @default(now())
-
-  favoriteBooks books[]
-  favoriteAuthors authors[]
-}
-
-model books {
-  id        Int      @id @default(autoincrement())
-  title     String
-  image     String
-  year      Int?
-  createdAt DateTime @default(now())
-
-  favoritedBy users[]
-  authors     authors[]
-}
-
-model authors {
-  id        Int      @id @default(autoincrement())
-  name      String
-  image     String
-  slug      String  @unique
-  shortBio  String?
-  
-  createdAt DateTime @default(now())
-
-  books books[]
-  favoritedBy users[]
 }
