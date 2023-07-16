@@ -17,7 +17,7 @@ export default function BookGrid({
     total_pages: totalPages,
   } = searchResults;
 
-  const isEmpty = books.length === 0;
+  const isEmpty = !books || books.length === 0;
 
   return (
     <div>
