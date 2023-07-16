@@ -11,7 +11,7 @@ async function getBooks({
   const params = new URLSearchParams(
     removeEmptyQueryParams(searchParams)
   ).toString();
-  const url = `${apiRoute}/api/search?${params}`;
+  const url = `https://book-finder1.p.rapidapi.com/api/search?${params}`;
 
   const response = await fetch(url, fetchOptions);
   const results = await response.json();
