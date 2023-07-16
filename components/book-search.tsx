@@ -1,17 +1,18 @@
 "use client";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
-import { useSearchParams } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useState } from "react";
 import CategorySelect from "./category-select";
 
 export default function BookSearch() {
+  const pathname = usePathname();
   const searchParams = useSearchParams();
   const title = searchParams.get("title");
   const category = decodeURIComponent(searchParams.get("categories") || "");
   const [searchInput, setSearchInput] = useState(title || "");
 
-  const showCategory = location.pathname === "/books";
+  const showCategory = pathname === "/books";
 
   return (
     <form action="/books" method="GET">
