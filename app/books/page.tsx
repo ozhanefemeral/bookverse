@@ -3,6 +3,8 @@ import BookGrid from "@/components/book-grid";
 import { SearchResult } from "../types";
 import { apiRoute, fetchOptions, removeEmptyQueryParams } from "@/lib/utils";
 
+export const dynamic='force-dynamic';
+
 async function getBooks({
   searchParams,
 }: {
@@ -11,8 +13,7 @@ async function getBooks({
   const params = new URLSearchParams(
     removeEmptyQueryParams(searchParams)
   ).toString();
-  const url = `https://book-finder1.p.rapidapi.com/api/search?${params}`;
-
+  const url = `${apiRoute}/api/search?${params}`
   const response = await fetch(url, fetchOptions);
   const results = await response.json();
 
