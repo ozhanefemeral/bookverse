@@ -1,4 +1,5 @@
 import prisma from "../lib/prisma";
+import bcrypt from "bcrypt";
 
 async function main() {
   const response = await Promise.all([
@@ -10,6 +11,7 @@ async function main() {
         email: "ozzy@example.com",
         image:
           "https://pbs.twimg.com/profile_images/1678693347005722626/yQENjtcV_400x400.jpg",
+        password: bcrypt.hashSync("123456789", 10),
       },
     }),
   ]);
