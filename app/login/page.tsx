@@ -62,14 +62,18 @@ export default function LoginPage() {
               onChange={(e) => setPassword(e.target.value)}
             />
           </CardContent>
-          <CardFooter className="justify-self-end flex justify-between mt-auto">
+          <CardFooter className="justify-self-end flex justify-between mt-auto gap-4">
             {isLoading && (
               <p className="animate-bounce text-primary">
                 {loadingMessages.login}
               </p>
             )}
             {!isLoading && error && <p className="text-destructive">{error}</p>}
-            <Button onClick={handleLogin} type="button">
+            <Button
+              className="ml-auto"
+              onClick={handleLogin}
+              type="button"
+            >
               Login
             </Button>
           </CardFooter>
