@@ -44,7 +44,7 @@ export default function PaginationController({ total }: { total: number }) {
           <SelectTrigger className="flex-shrink-0">
             <SelectValue placeholder={currentPage} />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent className="max-h-60 overflow-y-auto">
             {Array.from({ length: total }, (_, i) => i + 1).map((page) => (
               <SelectItem key={page} value={page.toString()}>
                 {page}
