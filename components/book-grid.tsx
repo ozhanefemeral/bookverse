@@ -1,10 +1,7 @@
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-} from "./ui/card";
+import { Card, CardHeader, CardTitle } from "./ui/card";
 import Image from "next/image";
 import { SearchResult } from "@/app/types";
+import PaginationController from "./pagination-controller";
 
 export default function BookGrid({
   searchResults,
@@ -33,12 +30,17 @@ export default function BookGrid({
       )}
       {!isEmpty && (
         <>
-          <div className="flex items-center py-4">
-            Found
-            <span className="font-bold text-primary">
-              &nbsp;{totalResults}&nbsp;
-            </span>
-            book{totalResults > 1 ? "s" : ""}
+          <div className="flex flex-wrap justify-between items-center md:gap-4">
+            <div className="w-full md:w-fit text-center pt-4 md:pt-0 text-lg">
+              Found
+              <span className="font-bold text-primary">
+                &nbsp;{totalResults}&nbsp;
+              </span>
+              book{totalResults > 1 ? "s" : ""}
+            </div>
+            <div className="w-full md:w-fit py-4">
+              <PaginationController total={totalPages} />
+            </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
             {books.map((book, index) => {
@@ -75,6 +77,9 @@ export default function BookGrid({
                 </Card>
               );
             })}
+          </div>
+          <div className="flex justify-center md:justify-end pt-4">
+            <PaginationController total={totalPages} />
           </div>
         </>
       )}
