@@ -43,3 +43,9 @@ export const removeEmptyQueryParams = (query: any) => {
   });
   return q;
 };
+
+export const loadingMessages = {
+  login: "Opening the gates to your bookish realm... ",
+  register: "Preparing the ink and parchment...",
+  fetching: "Summoning a collection of extraordinary books...",
+};
