@@ -1,25 +1,41 @@
-import { Card, CardHeader, CardTitle } from "./ui/card";
+import { Card, CardHeader, CardTitle } from "../ui/card";
 import Image from "next/image";
 import { SearchResult } from "@/app/types";
-import PaginationController from "./pagination-controller";
+import PaginationController from "../pagination-controller";
+import { apiRoute, fetchOptions, removeEmptyQueryParams } from "@/lib/utils";
 
-export default function BookGrid({
-  searchResults,
+async function getBooks({
+  searchParams,
 }: {
-  searchResults: SearchResult;
+  searchParams: { [key: string]: string };
+}): Promise<SearchResult> {
+  const params = new URLSearchParams(
+    removeEmptyQueryParams(searchParams)
+  ).toString();
+  const url = `${apiRoute}/api/search?${params}`;
+  const response = await fetch(url, fetchOptions);
+  const results = await response.json();
+
+  return results;
+}
+
+export default async function BookGrid({
+  searchParams,
+}: {
+  searchParams: { [key: string]: string };
 }) {
   const {
     results: books,
     total_results: totalResults,
     total_pages: totalPages,
-  } = searchResults;
+  } = await getBooks({ searchParams });
 
   const isEmpty = !books || books.length === 0;
 
   return (
     <div>
       {isEmpty && (
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center py-4">
           <h1 className="text-3xl font-bold text-center">
             Looks like there are no books here 😿
           </h1>
